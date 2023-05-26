@@ -25,8 +25,6 @@
         display: table-cell;
         vertical-align: middle;
         font-size: 15px;
-        font-weight: 600;
-        font-family: 'Poppins';
         color: #00365D;
     }
 </style>
