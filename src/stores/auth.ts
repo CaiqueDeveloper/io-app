@@ -37,12 +37,12 @@ export const useAuthStore = defineStore("auth", () => {
   function login(credentials: User) {
 
     
-    return ApiService.post("login", credentials)
+    return ApiService.post("auth/login", credentials)
       .then(({ data }) => {
         setAuth(data);
       })
       .catch(({ response }) => {
-        setError(response.data.errors);
+        setError(response.data);
       });
   }
 
@@ -73,12 +73,12 @@ export const useAuthStore = defineStore("auth", () => {
   function verifyAuth() {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      ApiService.post("verify_token", { api_token: JwtService.getToken() })
+      ApiService.post("auth/verify_token", { api_token: JwtService.getToken() })
         .then(({ data }) => {
-          setAuth(data);
+          JwtService.saveToken(data.response.api_token);
         })
         .catch(({ response }) => {
-          setError(response.data.errors);
+          setError(response.data);
           purgeAuth();
         });
     } else {

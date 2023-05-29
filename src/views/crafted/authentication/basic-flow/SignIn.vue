@@ -90,25 +90,25 @@
         <!--end::Submit button-->
 
         <!--begin::Separator-->
-        <div class="text-center text-muted text-uppercase fw-bold mb-5">or</div>
+        <div class="text-center d-none text-muted text-uppercase fw-bold mb-5">or</div>
         <!--end::Separator-->
 
         <!--begin::Google link-->
-        <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+        <a href="#" class="btn btn-flex d-none flex-center btn-light btn-lg w-100 mb-5">
           <img alt="Logo" :src="getAssetPath('media/svg/brand-logos/google-icon.svg')" class="h-20px me-3" />
           Continue with Google
         </a>
         <!--end::Google link-->
 
         <!--begin::Google link-->
-        <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+        <a href="#" class="btn btn-flex d-none flex-center btn-light btn-lg w-100 mb-5">
           <img alt="Logo" :src="getAssetPath('media/svg/brand-logos/facebook-4.svg')" class="h-20px me-3" />
           Continue with Facebook
         </a>
         <!--end::Google link-->
 
         <!--begin::Google link-->
-        <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
+        <a href="#" class="btn btn-flex d-none flex-center btn-light btn-lg w-100">
           <img alt="Logo" :src="getAssetPath('media/svg/brand-logos/apple-black.svg')" class="h-20px me-3" />
           Continue with Apple
         </a>
@@ -166,7 +166,6 @@ export default defineComponent({
       // Send login request
       await store.login(values);
       const error = Object.values(store.errors);
-
       if (error.length === 0) {
         Swal.fire({
           text: "You have successfully logged in!",
