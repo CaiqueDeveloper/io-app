@@ -74,10 +74,9 @@ export const useAuthStore = defineStore("auth", () => {
     if (JwtService.getToken()) {
       ApiService.setHeader();
       ApiService.post("auth/verify_token", { api_token: JwtService.getToken() })
-        .then(({ data }) => {
-          JwtService.saveToken(data.response.api_token);
-        })
-        .catch(({ response }) => {
+      .then((response) => {
+          JwtService.saveToken(response.data.api_token);
+        }).catch((response) => {
           setError(response.data);
           purgeAuth();
         });

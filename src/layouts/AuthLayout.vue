@@ -16,7 +16,7 @@
       <!--end::Form-->
 
       <!--begin::Footer-->
-      <div class="d-flex flex-center flex-wrap px-5">
+      <div class="d-none flex-center flex-wrap px-5">
         <!--begin::Links-->
         <div class="d-flex fw-semibold text-primary fs-base">
           <a href="#" class="px-5" target="_blank">Terms</a>

@@ -15,10 +15,10 @@
         <!--begin::Username-->
         <div class="d-flex flex-column">
           <div class="fw-bold d-flex align-items-center fs-5">
-            Max Smith
+            {{store.user.name}} {{store.user.surname}}
             <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
           </div>
-          <a href="#" class="fw-semobold text-muted text-hover-primary fs-7">max@kt.com</a>
+          <a href="#" class="fw-semobold text-muted text-hover-primary fs-7">{{ store.user.email}}</a>
         </div>
         <!--end::Username-->
       </div>
@@ -38,7 +38,7 @@
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5">
+    <div class="menu-item px-5 d-none">
       <router-link to="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-text">My Projects</span>
         <span class="menu-badge">
@@ -49,7 +49,7 @@
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start"
+    <div class="menu-item d-none px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top">
       <router-link to="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-title">My Subscription</span>
@@ -114,7 +114,7 @@
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5">
+    <div class="menu-item d-none px-5">
       <router-link to="/pages/profile/overview" class="menu-link px-5">
         My Statements
       </router-link>
@@ -283,6 +283,7 @@ export default defineComponent({
       currentLangugeLocale,
       countries,
       getAssetPath,
+      store
     };
   },
 });
