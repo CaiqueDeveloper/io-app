@@ -7,8 +7,11 @@ export interface User {
   name: string;
   surname: string;
   email: string;
-  password: string;
-  api_token: string;
+  hotel: object,
+  hotels: object,
+  networks: object,
+  regionals: object,
+  drawingMenu: object,
 }
 
 export const useAuthStore = defineStore("auth", () => {
@@ -17,10 +20,16 @@ export const useAuthStore = defineStore("auth", () => {
   const isAuthenticated = ref(!!JwtService.getToken());
 
   function setAuth(authUser: User) {
+
     isAuthenticated.value = true;
-    user.value = authUser;
+    user.value = authUser[0].user;
+    user.value.hotel = authUser[0].hotel;
+    user.value.hotels = authUser[0].hotels;
+    user.value.networks = authUser[0].networks;
+    user.value.regionals = authUser[0].regionals;
+    user.value.drawingMenu = authUser[0].drawingMenu;
     errors.value = {};
-    JwtService.saveToken(user.value.api_token);
+    JwtService.saveToken(authUser[0].user.api_token);
   }
 
   function setError(error: any) {
@@ -47,7 +56,9 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function logout() {
+
     purgeAuth();
+
   }
 
   function register(credentials: User) {
@@ -75,10 +86,13 @@ export const useAuthStore = defineStore("auth", () => {
       ApiService.setHeader();
       ApiService.post("auth/verify_token", { api_token: JwtService.getToken() })
       .then((response) => {
+
           JwtService.saveToken(response.data.api_token);
+
         }).catch((response) => {
           setError(response.data);
           purgeAuth();
+          
         });
     } else {
       purgeAuth();

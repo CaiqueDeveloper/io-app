@@ -3,7 +3,7 @@
   <div class="w-lg-500px p-10">
     <!--begin::Form-->
     <VForm class="form w-100" id="kt_login_signin_form" @submit="onSubmitLogin" :validation-schema="login"
-      :initial-values="{ email: 'admin@demo.com', password: 'demo' }">
+      :initial-values="{ email: 'caique@gmail.com', password: 'Ca1qu399542927' }">
       <!--begin::Heading-->
       <div class="text-center mb-10">
         <!--begin::Title-->
